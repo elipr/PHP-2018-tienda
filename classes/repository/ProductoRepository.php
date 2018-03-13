@@ -73,4 +73,45 @@ class ProductoRepository {
         
     }
     
+    public static function actualizar(Producto $producto) {
+        
+        $pdo = Conexion::getConexion();
+        
+        if(isset($producto->imagen_nombre)){
+            
+            $sql = "update productos set categorias_id=:categorias_id, nombre=:nombre, descripcion=:descripcion, precio=:precio, stock=:stock, imagen_nombre=:imagen_nombre, imagen_tipo=:imagen_tipo, imagen_tamanio=:imagen_tamanio, estado=:estado
+                where id=:id";
+            
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindParam(':categorias_id', $producto->categorias_id);
+            $stmt->bindParam(':nombre', $producto->nombre);
+            $stmt->bindParam(':descripcion', $producto->descripcion);
+            $stmt->bindParam(':precio', $producto->precio);
+            $stmt->bindParam(':stock', $producto->stock);
+            $stmt->bindParam(':imagen_nombre', $producto->imagen_nombre);
+            $stmt->bindParam(':imagen_tipo', $producto->imagen_tipo);
+            $stmt->bindParam(':imagen_tamanio', $producto->imagen_tamanio);
+            $stmt->bindParam(':estado', $producto->estado);
+            $stmt->bindParam(':id', $producto->id);
+            $stmt->execute();
+            
+        }else{
+            
+            $sql = "update productos set categorias_id=:categorias_id, nombre=:nombre, descripcion=:descripcion, precio=:precio, stock=:stock, estado=:estado
+                where id=:id";
+            
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindParam(':categorias_id', $producto->categorias_id);
+            $stmt->bindParam(':nombre', $producto->nombre);
+            $stmt->bindParam(':descripcion', $producto->descripcion);
+            $stmt->bindParam(':precio', $producto->precio);
+            $stmt->bindParam(':stock', $producto->stock);
+            $stmt->bindParam(':estado', $producto->estado);
+            $stmt->bindParam(':id', $producto->id);
+            $stmt->execute();
+            
+        }
+        
+    }
+    
 }

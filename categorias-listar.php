@@ -9,7 +9,36 @@ $categorias = CategoriaRepository::listar();
     <head>
         <title>TODO supply a title</title>
         <?php require_once './includes/resources.php';?>
-        
+        <script>
+            $(function(){
+                $('.colorbox').colorbox({
+                    photo: true
+                });
+                
+                $('.colorbox-mostrar').colorbox();
+            });
+            
+            function eliminar(id){
+                bootbox.confirm({
+                    message: '¿Esta seguro que desea eliminar el producto?',
+                    buttons: {
+                        confirm: {
+                            label: 'Eliminar',
+                            className: 'btn-danger'
+                        },
+                        cancel: {
+                            label: 'Cancelar',
+                            className: 'btn-default'
+                        }
+                    },
+                    callback: function (result) {
+                        if(result){
+                            window.location.href = 'categoria-eliminar.php?id=' + id
+                        }
+                    }
+                })
+            }
+        </script>   
     </head>
     <body>
         
@@ -41,14 +70,14 @@ $categorias = CategoriaRepository::listar();
                             <td><?=$categoria->id?></td>
                             <td><?=$categoria->nombre?></td>
                             <td><?=$categoria->orden?></td>
-                            <td><a href="#" class="btn btn-warning btn-sm"><i class="glyphicon glyphicon-pencil"></i> Editar</a></td>
-                            <td><a href="#" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-trash"></i> Eliminar</a></td>
+                            <td><a href="categoria-editar.php?id=<?=$categoria->id?>" class="btn btn-warning btn-sm"><i class="glyphicon glyphicon-pencil"></i> Editar</a></td>
+                            <td><a href="javascript:void(0)" onclick="eliminar(<?=$categoria->id?>)" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-trash"></i> Eliminar</a></td>
                         </tr>
                         <?php } ?>
                     </tbody>
                 </table>
                 <div class="panel-footer">
-                    <a href="#" class="btn btn-success btn-sm"><i class="glyphicon glyphicon-plus"></i> Nuevo</a>
+                    <a href="categoria-nuevo.php" class="btn btn-success btn-sm"><i class="glyphicon glyphicon-plus"></i> Nuevo</a>
                 </div>
             </div>
             

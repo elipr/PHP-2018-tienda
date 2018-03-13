@@ -37,7 +37,7 @@ if($_FILES['imagen']['error']==0){
         mkdir(Constantes::RUTA_IMAGENES, '0777', true);
     }
     
-    $destino = Constantes::RUTA_IMAGENES . $_FILES['imagen']['name'];
+    $destino = Constantes::RUTA_IMAGENES . $_FILES['imagen']['name']; // Debe ser el id del producto
     
     move_uploaded_file($_FILES['imagen']['tmp_name'], $destino);
     

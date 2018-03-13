@@ -39,7 +39,7 @@ $categoria = CategoriaRepository::obtener($id);
                             <input type="number" id="orden" name="orden" value="<?=$categoria->orden?>" class="form-control" placeholder="Ingrese el número de orden">
                         </div>
 
-                        
+                         <input type="hidden" name="id" value="<?=$categoria->id?>"/>
                     </div>
                     <div class="panel-footer">
                         <input type="submit" class="btn btn-primary" value="Actualizar"/>

@@ -89,6 +89,7 @@ $productos = ProductoRepository::listar();
                 </table>
                 <div class="panel-footer">
                     <a href="productos-nuevo.php" class="btn btn-success btn-sm"><i class="glyphicon glyphicon-plus"></i> Nuevo</a>
+                    <a href="exportar-lista.php" class="btn btn-success btn-sm">Exportar archivo xls</a>
                 </div>
             </div>
             

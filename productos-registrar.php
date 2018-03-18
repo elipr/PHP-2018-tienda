@@ -1,6 +1,9 @@
 <?php
 require_once './autoload.php';
 
+$productos = ProductoRepository::listar();
+//var_dump($productos);
+?>
 // validaciones
 if(!isset($_POST['categorias_id']) || '' === $_POST['categorias_id'])
     die('Categoría inválida');
